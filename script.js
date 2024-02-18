@@ -18,7 +18,9 @@ const init = () => {
 }
 
 const animate = timestamp => {
-  frames++
+  frames++;
+
+  draw(c);
 
   if(timestamp - framet >= 1000) {
     fpsDislpay.innerHTML = `FPS: ${frames}`;
@@ -27,6 +29,18 @@ const animate = timestamp => {
   }
 
   myRequest = requestAnimationFrame(animate);
+}
+
+const draw = c => {
+  clear(c)
+  c.beginPath()
+  c.arc(canvas.width/2, canvas.height/2, 50, 0, 2 * Math.PI)
+  c.fillStyle = `hsl(200, 100%, 50%)`
+  c.fill()
+}
+
+const clear = c => {
+  c.clearRect(0, 0, canvas.width, canvas.height)
 }
 
 init()
